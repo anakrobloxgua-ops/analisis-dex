@@ -1,6 +1,6 @@
 import { unzipSync } from "fflate";
 
-const MAX_FILE_BYTES = 20 * 1024 * 1024;
+const MAX_FILE_BYTES = 50 * 1024 * 1024;
 const MAX_TOTAL_UNCOMPRESSED = 80 * 1024 * 1024;
 const MAX_DEX_COUNT = 20;
 const MAX_STRINGS = 50000;
