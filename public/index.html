@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b12">
+<title>DEXTRACE — APK Analyzer</title>
+<style>
+:root{color-scheme:dark;--bg:#080b12;--panel:#0e1420;--panel2:#111a29;--line:#233247;--text:#e8f0ff;--muted:#8ea2bc;--blue:#58a6ff;--cyan:#48e0d0;--green:#69f0ae;--red:#ff7185;--amber:#ffca70}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% -20%,#152b48 0,transparent 42%),var(--bg);color:var(--text);font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1180px;margin:auto;padding:18px 14px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 20px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border:1px solid #356da7;border-radius:12px;background:linear-gradient(135deg,#142f50,#0d1829);display:grid;place-items:center;color:var(--cyan);font-weight:900;font-size:20px;box-shadow:0 0 28px #1688ff1c}.brand h1{font-size:16px;letter-spacing:1.8px;margin:0}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1px}.status{font-size:11px;color:var(--green);border:1px solid #225943;border-radius:99px;padding:5px 9px;white-space:nowrap}.hero{padding:26px 0 18px}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2px}.hero h2{font-size:clamp(24px,5vw,40px);line-height:1.15;letter-spacing:-1.5px;margin:8px 0 10px}.hero h2 span{color:var(--blue)}.hero p{color:var(--muted);max-width:700px;margin:0}.grid{display:grid;grid-template-columns:1fr;gap:14px}.panel{background:linear-gradient(180deg,#101827f2,#0c121d);border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 12px 36px #0002}.panelhead{padding:12px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;background:#ffffff03}.panelhead strong{font-size:12px;letter-spacing:.7px}.panelhead span{font-size:10px;color:var(--muted)}.panelbody{padding:15px}.drop{border:1px dashed #355a7e;border-radius:12px;padding:25px 14px;text-align:center;background:linear-gradient(135deg,#1222396e,#0c1726);transition:.2s}.drop.drag{border-color:var(--cyan);background:#153143}.uploadicon{font-size:28px;color:var(--cyan)}.drop h3{margin:7px 0 3px;font-size:15px}.muted{color:var(--muted)}.small{font-size:11px}.btn{border:1px solid #356aa2;background:linear-gradient(180deg,#17385d,#102846);color:#eaf5ff;border-radius:9px;padding:10px 14px;font-weight:700;transition:.15s}.btn:hover{filter:brightness(1.15)}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.secondary{background:#101a28;border-color:var(--line)}.btn.full{width:100%;margin-top:12px}.fileline{display:flex;align-items:center;gap:10px;margin-top:12px;padding:10px;border:1px solid var(--line);border-radius:9px;min-width:0}.fileline .fname{overflow-wrap:anywhere;flex:1}.progress{height:4px;background:#182536;border-radius:8px;overflow:hidden;margin-top:12px}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .25s}.notice{margin-top:12px;padding:10px 12px;border:1px solid #5d4b2a;background:#2a2111;border-radius:9px;color:#ffd995;font-size:11px}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{padding:13px;border:1px solid var(--line);border-radius:11px;background:#0b111b}.stat label{display:block;font-size:10px;color:var(--muted);letter-spacing:1px}.stat strong{display:block;font-size:23px;margin-top:4px;overflow-wrap:anywhere}.tabs{display:flex;gap:7px;overflow-x:auto;padding:12px 14px;border-bottom:1px solid var(--line)}.tab{flex:0 0 auto;background:#0d1521;border:1px solid var(--line);color:var(--muted);padding:8px 11px;border-radius:8px;font-size:11px}.tab.active{color:var(--cyan);border-color:#287b86;background:#10272e}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.search{flex:1;min-width:150px;background:#080e17;border:1px solid var(--line);border-radius:8px;color:var(--text);padding:10px 12px;outline:none}.search:focus{border-color:var(--blue)}.resultlist{display:flex;flex-direction:column;gap:8px}.result{border:1px solid var(--line);background:#0a111b;border-radius:9px;padding:11px 12px;overflow-wrap:anywhere}.resulttop{display:flex;justify-content:space-between;gap:8px;align-items:start}.tag{display:inline-block;color:var(--cyan);font-size:10px;border:1px solid #24505b;border-radius:5px;padding:2px 5px;margin:0 5px 5px 0}.result p{white-space:pre-wrap;overflow-wrap:anywhere;margin:7px 0 0;color:#d2def0;font-size:12px}.result .meta{color:var(--muted);font-size:10px}.empty{text-align:center;padding:30px 12px;color:var(--muted)}.hidden{display:none!important}.footer{color:#5e718a;font-size:10px;text-align:center;margin-top:22px}.error{color:var(--red);font-size:12px;margin-top:10px;white-space:pre-wrap}.success{color:var(--green)}.hint{border-left:2px solid var(--blue);padding:8px 10px;background:#101d2d;margin:8px 0;color:#b8cbe3;font-size:11px}.terminal{color:var(--green)}.dexcard{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:11px;border:1px solid var(--line);border-radius:9px;margin-bottom:8px}.dexcard strong{font-size:12px}.dexcard small{display:block;color:var(--muted);font-size:10px}.exportrow{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid var(--line);border-radius:99px;padding:4px 8px;color:var(--muted);font-size:10px}
+@media(min-width:800px){.wrap{padding:24px 22px 70px}.grid{grid-template-columns:minmax(330px,.78fr) minmax(0,1.22fr)}.hero{padding:34px 0 24px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.panelbody{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">D/</div><div><h1>DEXTRACE</h1><small>ANDROID STATIC ANALYZER // V1.0</small></div></div>
+  <div class="status">● SYSTEM READY</div>
+</header>
+<section class="hero">
+  <div class="eyebrow">[ REVERSE ENGINEERING WORKBENCH ]</div>
+  <h2>Inspect the <span>inside.</span><br>Understand the code.</h2>
+  <p>Analisis statis APK dari browser. Deteksi semua DEX, ekstrak string, cari indikasi fitur, endpoint, class dan nama method — tanpa menjalankan APK.</p>
+</section>
+<div class="grid">
+<section class="panel">
+  <div class="panelhead"><strong>01 / INPUT SOURCE</strong><span>LOCAL UPLOAD</span></div>
+  <div class="panelbody">
+    <div class="drop" id="drop">
+      <div class="uploadicon">⌁</div>
+      <h3>Drop APK file here</h3>
+      <div class="muted small">atau pilih dari penyimpanan HP</div>
+      <div style="margin-top:15px"><button class="btn" id="choose">SELECT APK</button></div>
+      <input id="file" type="file" accept=".apk,application/vnd.android.package-archive" hidden>
+      <div class="small muted" style="margin-top:12px">MAKSIMUM 20 MB · APK SAJA</div>
+    </div>
+    <div id="fileline" class="fileline hidden"><span>▣</span><div class="fname"><strong id="filename"></strong><div id="filesize" class="small muted"></div></div><button id="clear" class="btn secondary" aria-label="Hapus file">×</button></div>
+    <button id="scan" class="btn full" disabled>▶ START DEEP SCAN</button>
+    <div class="progress"><div id="progressbar"></div></div>
+    <div id="scanstatus" class="small muted" style="margin-top:8px">Menunggu input file...</div>
+    <div id="error" class="error"></div>
+    <div class="notice">⚠ Analisis statis saja. Jangan unggah APK yang berisi data pribadi atau rahasia. File diproses sementara oleh fungsi serverless; jangan gunakan untuk APK yang tidak berhak kamu analisis.</div>
+  </div>
+</section>
+<section class="panel">
+  <div class="panelhead"><strong>02 / SCAN OVERVIEW</strong><span id="scanid">NO SESSION</span></div>
+  <div class="panelbody">
+    <div class="stats">
+      <div class="stat"><label>DEX FILES</label><strong id="statdex">—</strong></div>
+      <div class="stat"><label>STRINGS</label><strong id="statstrings">—</strong></div>
+      <div class="stat"><label>URLS FOUND</label><strong id="staturls">—</strong></div>
+      <div class="stat"><label>FEATURE HINTS</label><strong id="statfeatures">—</strong></div>
+    </div>
+    <div class="hint" style="margin-top:12px">Tip: gunakan pencarian untuk mencari <span class="terminal">redeem</span>, <span class="terminal">activation</span>, <span class="terminal">validateCode</span>, URL API, atau nama class yang ingin diperiksa.</div>
+    <div id="dexoverview" style="margin-top:14px"><div class="empty">Belum ada hasil scan.</div></div>
+    <div class="exportrow"><button id="exportjson" class="btn secondary" disabled>EXPORT JSON</button><button id="exporttxt" class="btn secondary" disabled>EXPORT TXT</button></div>
+  </div>
+</section>
+</div>
+<section class="panel" id="results" style="margin-top:14px">
+  <div class="panelhead"><strong>03 / ANALYSIS CONSOLE</strong><span id="resultcount">0 RESULTS</span></div>
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tab="features">FEATURES</button>
+    <button class="tab" data-tab="dex">DEX FILES</button>
+    <button class="tab" data-tab="urls">URL / API</button>
+    <button class="tab" data-tab="classes">CLASS HINTS</button>
+    <button class="tab" data-tab="methods">METHOD HINTS</button>
+    <button class="tab" data-tab="strings">STRINGS</button>
+    <button class="tab" data-tab="guide">MODIFICATION GUIDE</button>
+  </div>
+  <div class="panelbody">
+    <div class="toolbar"><input id="search" class="search" type="search" placeholder="Cari di hasil scan..." autocomplete="off"><span class="pill" id="filterinfo">ALL DEX</span></div>
+    <div id="console"><div class="empty">[ WAITING ] Jalankan scan untuk menampilkan hasil.</div></div>
+  </div>
+</section>
+<div class="footer">DEXTRACE // STATIC ANALYSIS ONLY // NO APK EXECUTION<br>Hasil adalah indikasi berbasis string, bukan jaminan fungsi yang aktif.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let selectedFile=null, report=null, activeTab="features";
+const MAX=20*1024*1024;
+const fmt=n=>n<1024?`${n} B`:n<1048576?`${(n/1024).toFixed(1)} KB`:`${(n/1048576).toFixed(2)} MB`;
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function setStatus(s,p){$("scanstatus").textContent=s;if(p!==undefined)$("progressbar").style.width=p+"%";}
+function selectFile(f){
+  $("error").textContent="";
+  if(!f)return;
+  if(!f.name.toLowerCase().endsWith(".apk")){setError("File harus berakhiran .apk.");return;}
+  if(f.size>MAX){setError("Ukuran file melebihi batas 20 MB.");return;}
+  if(f.size<8){setError("File terlalu kecil atau tidak valid.");return;}
+  selectedFile=f;report=null;
+  $("fileline").classList.remove("hidden");$("filename").textContent=f.name;$("filesize").textContent=fmt(f.size);
+  $("scan").disabled=false;$("exportjson").disabled=true;$("exporttxt").disabled=true;
+  $("statdex").textContent=$("statstrings").textContent=$("staturls").textContent=$("statfeatures").textContent="—";
+  $("scanid").textContent="READY";$("dexoverview").innerHTML='<div class="empty">File siap dianalisis.</div>';
+  $("console").innerHTML='<div class="empty">[ READY ] Tekan START DEEP SCAN.</div>';setStatus("File siap. Scan belum berjalan.",0);
+}
+function setError(s){$("error").textContent=s;setStatus("Gagal.",0);}
+$("choose").onclick=()=>$("file").click();
+$("file").onchange=e=>selectFile(e.target.files[0]);
+$("clear").onclick=()=>{selectedFile=null;report=null;$("file").value="";$("fileline").classList.add("hidden");$("scan").disabled=true;$("scanid").textContent="NO SESSION";setStatus("Menunggu input file...",0);$("error").textContent="";};
+const drop=$("drop");
+["dragenter","dragover"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add("drag")}));
+["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove("drag")}));
+drop.addEventListener("drop",e=>selectFile(e.dataTransfer.files[0]));
+$("scan").onclick=async()=>{
+ if(!selectedFile)return;
+ $("scan").disabled=true;$("error").textContent="";setStatus("Membaca file dan memindai DEX...",12);
+ $("scanid").textContent="SCANNING";
+ const form=new FormData();form.append("apk",selectedFile);
+ try{
+  setStatus("Mengirim APK ke analyzer serverless...",25);
+  const res=await fetch("/api/analyze",{method:"POST",body:form});
+  setStatus("Memproses hasil scan...",75);
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.error||`HTTP ${res.status}`);
+  report=data;setStatus("Scan selesai.",100);$("scanid").textContent="COMPLETE";
+  $("statdex").textContent=data.dexCount;$("statstrings").textContent=data.dexReports.reduce((n,d)=>n+d.stringsCount,0).toLocaleString();
+  $("staturls").textContent=data.urls.length;$("statfeatures").textContent=data.findings.length;
+  $("dexoverview").innerHTML=data.dexFiles.map(d=>`<div class="dexcard"><div><strong>${esc(d.name)}</strong><small>${fmt(d.bytes)} · ${d.stringsCount} strings</small></div><div class="pill">${d.classHints} class hints</div></div>`).join("");
+  $("exportjson").disabled=false;$("exporttxt").disabled=false;render();
+ }catch(e){setError(e.message||"Scan gagal.");$("scanid").textContent="ERROR";}
+ finally{$("scan").disabled=!selectedFile;}
+};
+$("tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(!b)return;activeTab=b.dataset.tab;document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t===b));render();});
+$("search").addEventListener("input",render);
+function card(title,tag,body,meta=""){
+ return `<article class="result"><div class="resulttop"><strong>${esc(title)}</strong>${tag?`<span class="tag">${esc(tag)}</span>`:""}</div>${meta?`<div class="meta">${esc(meta)}</div>`:""}<p>${esc(body)}</p></article>`;
+}
+function render(){
+ if(!report){return;}
+ const q=$("search").value.trim().toLowerCase();let html="",count=0;
+ const add=(t,tag,b,m)=>{count++;html+=card(t,tag,b,m);};
+ if(activeTab==="features"){
+  for(const f of report.findings){
+   const ex=f.examples.filter(x=>!q||(f.label+" "+x.value+" "+x.dex).toLowerCase().includes(q));
+   if(q&&!ex.length&&!f.label.toLowerCase().includes(q))continue;
+   add(f.label,`${f.count} HITS`,ex.slice(0,30).map(x=>`[${x.dex}] ${x.value}`).join("\n")||"Kategori terdeteksi dari string; periksa alur kode untuk konfirmasi.","indikasi · bukan bukti fitur aktif");
+  }
+  if(!count)html='<div class="empty">Tidak ada kategori yang cocok. Coba kata kunci lain.</div>';
+ }
+ if(activeTab==="dex"){
+  report.dexReports.forEach(d=>{if(!q||(d.name+" "+d.classHints.join(" ")+" "+d.methodHints.join(" ")).toLowerCase().includes(q))add(d.name,"DEX",`${d.bytes} bytes\nString: ${d.stringsCount}\nClass hints: ${d.classHints.length}\nMethod hints: ${d.methodHints.length}`,"DEX ditemukan dalam APK");});
+ }
+ if(activeTab==="urls"){
+  report.urls.filter(u=>!q||u.toLowerCase().includes(q)).forEach(u=>add(u,"URL/API","String URL ditemukan di DEX. Periksa domain dan konteks pemanggil sebelum menyimpulkan endpoint aktif.","indikasi URL"));
+  if(!count)html='<div class="empty">Tidak ada URL yang cocok.</div>';
+ }
+ if(activeTab==="classes"){
+  report.dexReports.forEach(d=>d.classHints.filter(s=>!q||(s+" "+d.name).toLowerCase().includes(q)).forEach(s=>add(s,"CLASS",`Petunjuk nama class dari string DEX.\nPerlu dekompilasi lanjutan untuk melihat method dan implementasi.`,d.name)));
+  if(!count)html='<div class="empty">Tidak ada class hint yang cocok. Nama class tidak selalu tersimpan sebagai string utuh.</div>';
+ }
+ if(activeTab==="methods"){
+  report.dexReports.forEach(d=>d.methodHints.filter(s=>!q||(s+" "+d.name).toLowerCase().includes(q)).forEach(s=>add(s,"METHOD HINT",`Nama yang mirip method/fitur. Ini bisa berupa nama method, field, atau string biasa; belum dipastikan sebagai deklarasi method.`,d.name)));
+  if(!count)html='<div class="empty">Tidak ada method hint yang cocok.</div>';
+ }
+ if(activeTab==="strings"){
+  report.dexReports.forEach(d=>d.strings.filter(s=>!q||(s+" "+d.name).toLowerCase().includes(q)).slice(0,2500).forEach(s=>add("String literal","STRING",s,d.name)));
+  if(!count)html='<div class="empty">Tidak ada string yang cocok.</div>';
+ }
+ if(activeTab==="guide"){
+  const guides=[
+   ["Redeem / activation","Cari kata redeem, activation, validate, verify, claim, license, voucher, code. Ikuti pemanggilan dari UI/button ke method, repository, lalu API. Jangan menyimpulkan hanya dari string."],
+   ["Endpoint API","Cari URL dan nama service seperti Retrofit/OkHttp. Periksa method HTTP, request body, response model, dan tempat endpoint dipanggil. Jangan tampilkan atau bagikan token/secret yang ditemukan."],
+   ["Database lokal","Cari SQLite, Room, CREATE TABLE, SharedPreferences. Tentukan apakah data disimpan lokal atau divalidasi server. Perubahan lokal tidak otomatis mengubah data server."],
+   ["UI / tombol","Temukan Activity/Fragment/ViewModel yang mengikat tombol. Telusuri listener → method → repository. Ubah resource/layout atau logika milik sendiri secara terpisah dan uji regresi."],
+   ["Build ulang","Untuk Smali penuh, gunakan JADX untuk membaca kode dan Apktool untuk resource/Smali. Setelah modifikasi, build ulang, sign APK dengan kunci milik sendiri, lalu uji pada perangkat uji."],
+   ["Batas analisis","Versi serverless ini hanya mengekstrak string dan petunjuk. Untuk method signature, call graph, Smali lengkap, manifest terurai, dan sumber dekompilasi diperlukan analyzer berbasis JADX/Apktool di lingkungan terpisah."]
+  ];
+  guides.filter(g=>!q||(g[0]+" "+g[1]).toLowerCase().includes(q)).forEach(g=>add(g[0],"GUIDE",g[1],"alur pemeriksaan yang disarankan"));
+ }
+ $("console").innerHTML=html||'<div class="empty">Tidak ada hasil.</div>';$("resultcount").textContent=`${count.toLocaleString()} RESULTS`;$("filterinfo").textContent=q?"FILTERED":"ALL DEX";
+}
+function download(name,content,type){
+ const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+$("exportjson").onclick=()=>report&&download("dextrace-report.json",JSON.stringify(report,null,2),"application/json");
+$("exporttxt").onclick=()=>{
+ if(!report)return;
+ const lines=[`DEXTRACE REPORT`, `File: ${report.fileName}`,`Scanned: ${report.scannedAt}`,`DEX files: ${report.dexCount}`,`URLs: ${report.urls.length}`,"", "DEX FILES",...report.dexFiles.map(d=>`${d.name} | ${fmt(d.bytes)} | ${d.stringsCount} strings`),"","URLS",...report.urls,"","FEATURE FINDINGS",...report.findings.flatMap(f=>[`[${f.label}] hits=${f.count}`,...f.examples.map(e=>`  ${e.dex}: ${e.value}`)]),"","NOTES",...report.notes];
+ download("dextrace-report.txt",lines.join("\n"),"text/plain;charset=utf-8");
+};
+</script>
+</body>
+</html>
