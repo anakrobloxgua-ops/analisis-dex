@@ -78,7 +78,7 @@
 <script>
 const $=id=>document.getElementById(id);
 let selectedFile=null, report=null, activeTab="features";
-const MAX=20*1024*1024;
+const MAX=50*1024*1024;
 const fmt=n=>n<1024?`${n} B`:n<1048576?`${(n/1024).toFixed(1)} KB`:`${(n/1048576).toFixed(2)} MB`;
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function setStatus(s,p){$("scanstatus").textContent=s;if(p!==undefined)$("progressbar").style.width=p+"%";}
